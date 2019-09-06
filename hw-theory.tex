@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{cmll}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{proof}
+\usepackage{url}
+\usepackage{CJKutf8}
+\newcommand{\gq}[1]{\texttt{<<}#1\texttt{>>}}
+\newcommand{\ogq}[1]{\overline{\texttt{<<}#1\texttt{>>}}}
+\begin{document}
+
+\begin{center}{\Large\textsc{\textbf{Теоретические (``малые'') домашние задания}}}\\
+             \it Теория типов, ИТМО, М3334-М3339, осень 2019 года\end{center}
+
+\section*{Домашнее задание №1: <<знакомство с лямбда-исчислением>>}
+
+\begin{enumerate}
+\item Расставьте скобки:
+
+\begin{enumerate}
+\item $\lambda x.x\ x\ \lambda x.x\ x$
+\item $(\lambda x.x\ x)\ \lambda x.x\ x$
+\item $\lambda x.(x\ x)\ \lambda x.x\ x$
+\item $\lambda f.\lambda x.f f f x$
+\end{enumerate}
+
+\item Проведите бета-редукции и приведите выражения к нормальной форме:
+
+\begin{enumerate}
+\item $(\lambda a.\lambda b.a)\ (\lambda a.\lambda b.a)\ (\lambda a.\lambda b.b)$
+\item $(\lambda a.\lambda b.a)\ b$
+\item $(\lambda f.\lambda x.f\ (f\ x))\ (\lambda f.\lambda x.f\ (f\ x))$
+\end{enumerate}
+
+\item Выразите следующие функции в лямбда-исчислении:
+
+\begin{enumerate}
+\item Or, Xor;
+\item тернарная операция в Си (\verb!?:!);
+\item isZero (T, если аргумент равен 0, иначе F);
+\item isEven (T, если аргумент чётный);
+\item умножение на 2;
+\item умножение;
+\item возведение в степень;
+\item упорядоченная пара. К паре должны прилагаться три лямбда-выражения ($M$, $P_l$, $P_r$):
+выражение $M$ по двум значениям строит упорядоченную пару, а выражения $P_l$ и $P_r$ возвращают
+первый и второй элемент упорядоченной пары соответственно.
+
+Убедитесь, что для ваших выражений выполнено $$P_l\ (M\ A\ B) \rightarrow_\beta \dots \rightarrow_\beta A$$ и 
+$$P_r\ (M\ A\ B) \rightarrow_\beta \dots \rightarrow_\beta B$$
+\item вычитание 1;
+\item вычитание;
+\item сравнение (<<меньше>>);
+\item деление.
+\end{enumerate}
+
+\item Какие функции вычисляют следующие выражения (при условии, что в качестве значений 
+параметров $m$ и $n$ подставлены чёрчевские нумералы)? Ответ обоснуйте.
+\begin{enumerate}
+\item $\lambda m.\lambda n.n\ m$;
+\item $\lambda m.\lambda n.\lambda x.n\ (m\ x)$.
+\end{enumerate}
+
+\item \emph{Ненормализуемым} назовём лямбда-выражение, не имеющее нормальной формы,
+то есть выражение, для которого нет конечной последовательности бета-редукций,
+приводящей к нормальной форме.
+\emph{Сильно нормализуемым} назовём лямбда-выражение, для которого не существует бесконечной
+последовательности бета-редукций (любая последовательность бета-редукций неизбежно 
+заканчивается нормальной формой, если её продолжать достаточно долго).
+\emph{Слабо нормализуемым} назовём лямбда-выражение, которое имеет нормальную форму,
+но существует бесконечная последовательность бета-редукций, которая не приводит его
+в нормальную форму. Приведите примеры сильно нормализуемого, слабо нормализуемого и 
+ненормализуемого лямбда-выражения.
+\end{enumerate}
+
+\end{document}
