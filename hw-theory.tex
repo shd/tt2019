@@ -60,8 +60,24 @@ $$P_r\ (M\ A\ B) \rightarrow_\beta \dots \rightarrow_\beta B$$
 \item деление.
 \end{enumerate}
 
-\item Какие функции вычисляют следующие выражения (при условии, что в качестве значений 
-параметров $m$ и $n$ подставлены чёрчевские нумералы)? Ответ обоснуйте.
+\item Назовём бета-эквивалентностью транзитивное, рефлексивное и симметричное замыкание отношения
+бета-редукции, будем записывать его как $(=_\beta)$. В частности, бета-эквивалентны те термы,
+которые имеют одинаковую нормальную форму.
+Также, нетрудно заметить следующее:
+\begin{enumerate}
+\item $And\ T\ F =_\beta F$;
+\item $\Omega =_\beta \Omega$;
+\item $(\lambda n.\lambda f.\lambda x.n\ f\ (f\ x))\ \overline{n\vphantom{n+1}} =_\beta \overline{n+1}$;
+\item $a \ne_\beta b$.
+\end{enumerate}
+
+Мы будем говорить, что лямбда-выражение $E$ выражает функцию $f(x_1,\dots,x_k): \mathbb{N}_0^k \rightarrow \mathbb{N}_0$,
+если при любых $x_1,\dots,x_k \in \mathbb{N}_0$
+выполнено
+
+$$E\ \overline{x_1}\ \dots\ \overline{x_k} =_\beta \overline{f(x_1,\dots,x_k)}$$
+
+Какие функции выражают следующие выражения? Ответ обоснуйте.
 \begin{enumerate}
 \item $\lambda m.\lambda n.n\ m$;
 \item $\lambda m.\lambda n.\lambda x.n\ (m\ x)$.
