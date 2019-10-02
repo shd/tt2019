@@ -28,3 +28,14 @@ https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
 https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
 + Сказка про лень да отеть
 https://russkaja-skazka.ru/len-da-otet/
+
+## Лекция 3
+### Просто типизированное лямбда-исчисление
++ Почему бестиповое лямбда-исчисление не подходит в качестве исчисления высказываний
++ Импликационный фрагмент интуиционистского исчисления высказываний
++ Просто типизированное лямбда-исчисление по Карри
++ Исчисление по Чёрчу
++ Комбинаторы, базис SK
+### Где почитать
++ Morten Heine B. Sørensen, Pawel Urzyczyn: Lections on the Curry-Howard Isomorphism
+https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf

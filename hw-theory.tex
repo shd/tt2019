@@ -244,4 +244,115 @@ $$In_R\ \langle\overline{1}, In_R\ \langle\overline{2}, In_R\ \langle\overline{3
 
 \end{enumerate}
 
+\section*{Домашнее задание №3: <<просто типизированное лямбда-исчисление>>}
+
+\begin{enumerate}
+\item На прошлой лекции определение параллельной бета-редукции было сформулировано неточно,
+отчего следующее утверждение не могло быть доказано:
+
+{\itshape Покажите, что каковы бы ни были термы $A$, $B$, $P$, $Q$ и переменная $x$, 
+если $A \rightrightarrows_\beta B$ и $P \rightrightarrows_\beta Q$, то 
+$A[x := P] \rightrightarrows_\beta B[x := Q]$.}
+
+Однако, данное утверждение можно доказать, если переформулировать параллельную 
+бета-редукцию так. $A \rightrightarrows_\beta B$, если:
+\begin{enumerate}
+\item $A=x$, $B=y$ и $x=y$
+\item $A = P\ Q$, $B = R\ S$ и $P\rightrightarrows_\beta R$, $Q\rightrightarrows_\beta S$
+\item $A = \lambda x.P$, $B = \lambda x.Q$ и $P\rightrightarrows_\beta Q$
+\item $A = (\lambda x.P)\ Q$, $B = R [x := S]$ и $P\rightrightarrows_\beta R$, $Q\rightrightarrows_\beta S$
+\end{enumerate}
+
+В связи с этим:
+
+\begin{enumerate}
+\item Докажите утверждение из прошлого домашнего задания при заданном определении.
+\item Обладает ли исходное отношение параллельной бета-редукции (заданное на прошлой лекции) ромбовидным свойством?
+Возможно, вы можете привести для него контрпример?
+\end{enumerate}
+
+\item Покажите, что если $A\twoheadrightarrow_\beta B$ и $\vdash A:\alpha$, то $\vdash B:\alpha$.
+
+\item Верно ли, что если $A\twoheadrightarrow_\beta B$ и $\vdash B:\alpha$, то $\vdash A:\alpha$?
+Верно ли это свойство для исчисления по Чёрчу?
+
+\item Покажите, что комбинатор $\Omega = (\lambda x.x\ x)\ (\lambda x.x\ x)$ не имеет типа.
+
+\item Покажите, что никакое лямбда-выражение не имеет типа $((\alpha\rightarrow\beta)\rightarrow\alpha)\rightarrow\alpha$.
+
+\item Докажите следующие утверждения в ИИВ и постройте соответствующие лямбда-выражения
+согласно изоморфизму Карри-Ховарда:
+\begin{enumerate}
+\item $\vdash(\alpha\rightarrow\alpha)\rightarrow\alpha\rightarrow\alpha$
+\item $\vdash\alpha\rightarrow\beta\rightarrow\beta$
+\item $\vdash(\alpha\rightarrow\beta)\rightarrow\alpha\rightarrow\beta$
+\item $\vdash(\alpha\rightarrow\alpha\rightarrow\beta)\rightarrow(\alpha\rightarrow\beta)$
+\item $\vdash(\alpha\rightarrow\beta\rightarrow\gamma)\rightarrow(\beta\rightarrow\alpha\rightarrow\gamma)$
+\item $\vdash(\alpha\rightarrow\beta)\rightarrow(\beta\rightarrow\gamma)\rightarrow(\alpha\rightarrow\gamma)$
+(аналог контрапозиции)
+\end{enumerate}
+
+\item Каков тип лямбда-выражения для суммы двух чёрчевских нумералов? Ответ поясните.
+
+\item Заметим, что:
+$$\begin{array}{l}
+\vdash S : (\alpha\rightarrow\beta\rightarrow\gamma)\rightarrow(\alpha\rightarrow\beta)\rightarrow(\alpha\rightarrow\gamma)\\
+\vdash K : \alpha\rightarrow\beta\rightarrow\alpha\end{array}$$
+
+Как несложно заметить, данные утверждения соответствуют (в смысле изоморфизма Карри-Ховарда) 
+схемам аксиом для импликационного фрагмента интуиционистского исчисления высказываний в гильбертовском стиле.
+Значит, и доказательство утверждений может быть (согласно изоморфизму) перенесено в лямбда-исчисление.
+
+Гильбертовский стиль, который мы использовали в курсе матлогики, предполагал плоский список высказываний
+и номера утверждений для подсказок.
+Однако, мы можем изображать эти доказательства и в виде дерева:
+
+%a->a->a
+%a->(a->a)->a
+%(a->(a->a)->a)->(a->a->a)->(a->a)
+%(a->a->a)->(a->a)
+
+$$\infer{\alpha\rightarrow\alpha}
+{\alpha\rightarrow\alpha\rightarrow\alpha &
+   \infer{(\alpha\rightarrow\alpha\rightarrow\alpha)\rightarrow(\alpha\rightarrow\alpha)}
+         { \alpha\rightarrow(\alpha\rightarrow\alpha)\rightarrow\alpha &
+          (\alpha\rightarrow(\alpha\rightarrow\alpha)\rightarrow\alpha)\rightarrow(\alpha\rightarrow\alpha\rightarrow\alpha)\rightarrow(\alpha\rightarrow\alpha)
+         }
+}$$
+
+Давайте теперь изобразим вывод типа (для экономии места мы не указываем вывод типов для комбинаторов
+S и K).
+
+$$\infer{\vdash S\ K\ K : \alpha\rightarrow\alpha}
+{\vdash K:\alpha\rightarrow\alpha\rightarrow\alpha &
+   \infer{\vdash S\ K: (\alpha\rightarrow\alpha\rightarrow\alpha)\rightarrow(\alpha\rightarrow\alpha)}
+         {\vdash K : \alpha\rightarrow(\alpha\rightarrow\alpha)\rightarrow\alpha &
+          \vdash S : (\alpha\rightarrow(\alpha\rightarrow\alpha)\rightarrow\alpha)\rightarrow(\alpha\rightarrow\alpha\rightarrow\alpha)\rightarrow(\alpha\rightarrow\alpha)
+         }
+}$$
+
+Осталось заметить, что действительно $I =_\beta S\ K\ K$.
+
+На основе изложенного, постройте доказательства следующих утверждений в гильбертовском стиле и
+выразите соответствующие выражения с помощью комбинаторов $S$ и $K$:
+
+\begin{enumerate}
+\item $\alpha\rightarrow\beta\rightarrow\beta$
+\item $(\alpha\rightarrow\beta)\rightarrow\alpha\rightarrow\beta$
+\item $(\alpha\rightarrow\alpha\rightarrow\beta)\rightarrow(\alpha\rightarrow\beta)$
+\item $(\alpha\rightarrow\beta\rightarrow\gamma)\rightarrow(\beta\rightarrow\alpha\rightarrow\gamma)$
+\end{enumerate}
+
+\item В дополнение к базису $SK$ рассмотрим базис $BCKW$: 
+$$\begin{array}{l}B = \lambda x.\lambda y.\lambda z.x\ (y\ z)\\
+C = \lambda x.\lambda y.\lambda z.x\ z\ y\\
+K = \lambda x.\lambda y.x\\
+W = \lambda x.\lambda y.x\ y\ y\end{array}$$
+
+Выведите типы для данных комбинаторов, постройте схемы аксиом для соответствующего гильбертовского исчисления
+высказываний и покажите, что данное исчисление также позволяет доказать любое утверждение из импликационного
+фрагмента ИИВ.
+
+\end{enumerate}
 \end{document}
+                  
