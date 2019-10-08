@@ -39,3 +39,13 @@ https://russkaja-skazka.ru/len-da-otet/
 ### Где почитать
 + Morten Heine B. Sørensen, Pawel Urzyczyn: Lections on the Curry-Howard Isomorphism
 https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
+
+## Лекция 4
+### Свойства просто типизированного лямбда-исчисления
++ Теорема о полноте импликационного фрагмента ИИВ
++ Сильная нормализация просто типизированного лямбда-исчисления
++ Класс вычислимых в просто типизированном лямбда-исчислении функций (формулировка)
++ Три задачи: обитаемость типа, вывод (реконструкция) типа, проверка типа
+### Где почитать
++ Morten Heine B. Sørensen, Pawel Urzyczyn: Lections on the Curry-Howard Isomorphism
+https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf

@@ -352,7 +352,60 @@ W = \lambda x.\lambda y.x\ y\ y\end{array}$$
 Выведите типы для данных комбинаторов, постройте схемы аксиом для соответствующего гильбертовского исчисления
 высказываний и покажите, что данное исчисление также позволяет доказать любое утверждение из импликационного
 фрагмента ИИВ.
+\end{enumerate}
+
+\section*{Домашнее задание №4: <<выразительная сила $\lambda_\rightarrow$; три задачи>>}
+\begin{enumerate}
+\item \emph{(Теорема о замкнутости импликационного фрагмента интуиционистского исчисления высказываний)}
+Пусть формулы $\Gamma = \{\gamma_1,\gamma_2,\dots,\gamma_n\}$ и $\alpha$ взяты из импликационного
+фрагмента ИИВ. Покажем, что если $\Vdash_C \Gamma$ влечёт $\Vdash_C \alpha$ в любой модели Крипке $C$,
+то тогда $\Gamma\vdash_\textrm{иф}\alpha$.
+
+Возьмём следующее множество миров: $W = \{ \Delta\ |\ \Gamma\subseteq\Delta \}$.
+Пусть заданы два мира $w_1,w_2\in W$. Договоримся, что $w_1 \preceq w_2$, если $w_1 \subseteq w_2$.
+Также договоримся, что если $w_i \in W$ и $P$ --- некоторая пропозициональная переменная,
+что $w_i \vdash P$, то $w_i \Vdash P$. Напомним, что данной тройки $\langle W, (\preceq), (\Vdash) \rangle$
+достаточно для задания модели Крипке. Тогда рассмотрим следующие задачи:
+
+\begin{enumerate}
+\item Покажите корректность определения модели Крипке: покажите, что если $w_i \preceq w_j$ и $w_i \Vdash P$,
+то $w_j \Vdash P$.
+\item Покажите, что $w_i \Vdash \varphi$ тогда и только тогда, когда $w_i \vdash \varphi$. \emph{Указание:} Из всего определения 
+моделей Крипке в импликационном фрагменте имеют смысл только определения для переменной и импликации.
+Поэтому главное содержательное утверждение --- показать, что $w_i \Vdash \psi_1\rightarrow\psi_2$
+тогда и только тогда, когда $w_i \vdash \psi_1\rightarrow\psi_2$. Используйте структурную индукцию и определение оценки импликации
+в моделях Крипке.
+\item Пусть $W = \{\Gamma\}$. Предъявите пример таких $\Gamma$ и $\alpha$,
+что $\Vdash \Gamma$, $\Vdash \alpha$, но $\Gamma\not\vdash\alpha$.
+\item К сожалению, подобным путём доказать полноту моделей Крипке для ИИВ со всеми связками невозможно. 
+Пусть мы построили аналогичную конструкцию для полного ИИВ. Тогда предложите такие $\Gamma$ и $\alpha$, 
+что при выполненном $\Vdash \Gamma$ выполнение $\Vdash \varphi$ не будет влечь $\Gamma \vdash \varphi$.
+\end{enumerate}
+
+Теперь завершим доказательство: в самом деле, если $\Vdash_C \Gamma$ влечёт $\Vdash_C \alpha$ в любой
+модели Крипке $C$, то оно будет выполнено и в построенной выше модели $\langle W, (\preceq), (\Vdash) \rangle$.
+То есть, если $\Vdash \gamma_1$, ..., $\Vdash \gamma_n$, то $\Vdash \alpha$.
+Значит, по определению импликации в моделях Крипке имеем $$\Vdash \gamma_1\rightarrow\dots\rightarrow\gamma_n\rightarrow\alpha$$
+Значит, по свойству (b): $$\vdash \gamma_1\rightarrow\dots\rightarrow\gamma_n\rightarrow\alpha$$
+И по теореме о дедукции получаем искомое $\Gamma\vdash\alpha$.
+
+\item Покажите, что функция возведения в степень не является расширенным полиномом.
+
+\item Пусть тип $\nu = (\alpha\rightarrow\alpha)\rightarrow(\alpha\rightarrow\alpha)$, где
+$\alpha$ --- это некоторый заранее зафиксированный атомарный тип.
+Предложите такие лямбда-выражения $F : \nu\rightarrow\nu\rightarrow\nu$, что:
+\begin{enumerate}
+\item Если $m,n \in \mathbb{N}_0$, то $F_a\ \overline{m}\ \overline{n} =_\beta \overline{m + n}$
+\item Если $m,n \in \mathbb{N}_0$, то $F_b\ \overline{m}\ \overline{n} =_\beta \overline{m \cdot n}$
+\end{enumerate}
+
+%\item В определениях предыдущей задачи рассмотрим лямбда-выражение $F:\nu\rightarrow\nu\rightarrow\nu$.
+%Пусть также $m,n\in\mathbb{N}_0$ и $f:\alpha\rightarrow\alpha$.
+%Рассмотрим нормальную форму выражения $F\ \overline{m}\ \overline{n}\ f$ --- она обязана 
+%существовать по свойству сильной нормализации $\lambda_\rightarrow$.
+%Покажите, что:
 
 \end{enumerate}
+
 \end{document}
                   
