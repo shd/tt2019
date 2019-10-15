@@ -49,3 +49,14 @@ https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
 ### Где почитать
 + Morten Heine B. Sørensen, Pawel Urzyczyn: Lections on the Curry-Howard Isomorphism
 https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
+
+## Лекция 5
+### Алгоритм унификации, вывод типа
++ Алгебраические термы, задача унификации
++ Алгоритм унификации
++ Алгоритм вывода типов в просто типизированном лямбда-исчислении
+### Где почитать
++ Morten Heine B. Sørensen, Pawel Urzyczyn: Lections on the Curry-Howard Isomorphism
+https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
++ Alberto Martelli, Ugo Montanari: An Efficient Unification Algorithm
+http://moscova.inria.fr/~levy/courses/X/IF/03/pi/levy2/martelli-montanari.pdf

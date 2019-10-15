@@ -407,5 +407,81 @@ $\alpha$ --- это некоторый заранее зафиксированн
 
 \end{enumerate}
 
+\section*{Домашнее задание №5: <<унификация алгебраических термов>>}
+\begin{enumerate}
+
+\item Покажите, что несовместная система не имеет решений. А именно, решений нет, если:
+\begin{enumerate}
+\item Если в системе есть уравнение вида $x = \Theta(x)$, где $\Theta(x)$ --- некоторый
+нетривиальный алгебраический терм со свободной переменной $x$.
+\item Если в системе есть уравнение вида $$f_n\ \theta_1\ \theta_2\ \dots\ \theta_n = g_m\ \sigma_1\ \sigma_2\ \dots\ \sigma_m$$
+где $f_n \not\equiv g_m$.
+\end{enumerate}
+
+\item Покажите, что следующие операции строят эквивалентную систему уравнений:
+\begin{enumerate}
+\item Исключение переменной: из системы 
+$$\left\{
+\begin{array}{l}x = \xi\\\sigma_1 = \theta_1\\\dots\\\sigma_n=\theta_n\end{array}\right.$$
+операция строит систему
+$$\left\{
+\begin{array}{l}x = \xi\\\sigma_1[x := \xi] = \theta_1[x := \xi]\\\dots\\\sigma_n[x:=\xi]=\theta_n[x := \xi]
+\end{array}\right.$$
+
+\item Редукция терма: из системы 
+$$\left\{
+\begin{array}{l}f_l\ \zeta_1\ \dots\ \zeta_l = f_l\ \eta_1\ \dots\ \eta_l\\
+\sigma_1 = \theta_1\\\dots\\\sigma_n=\theta_n\end{array}\right.$$
+операция строит систему
+$$\left\{
+\begin{array}{l}\zeta_1 = \eta_1\\\dots\\\zeta_l = \eta_l\\
+\sigma_1 = \theta_1\\\dots\\\sigma_n=\theta_n\end{array}\right.$$
+
+\end{enumerate}
+
+\item В доказательстве завершаемости алгоритма унификации использовалась лексикографически
+упорядоченная монотонно убывающая последовательность троек чисел. Однако, точного доказательства
+конечности этой последовательности не было дано. Покажите, что:
+
+\begin{enumerate}
+\item Не существует бесконечной строго убывающей последовательности упорядоченных троек:
+таких $\langle x_i, y_i, z_i\rangle$, $x_i,y_i,z_i \in\mathbb{N}_0$, что
+$\langle x_n, y_n, z_n\rangle > \langle x_{n+1}, y_{n+1}, z_{n+1} \rangle$ при любом $n$.
+\item Покажите, что любая строго убывающая последовательность ординалов имеет конечную длину.
+\item Поясните, почему первый пункт данной задачи является частным случаем второго.
+\end{enumerate}
+
+\item При помощи рассказанного на лекции алгоритма найдите типы для следующих лямбда-выражений, или покажите,
+что у них нет типа:
+\begin{enumerate}
+\item $\lambda x.\lambda y.x$
+\item $\lambda x.\lambda y.\lambda z.x\ z\ (y\ z)$
+\item $(\lambda x.x\ x)\ (\lambda x.x\ x)$
+\item $\lambda f.\lambda x.f\ (f\ x)$
+\item $\lambda m.\lambda n.\lambda f.\lambda x.m\ f\ (n\ f\ x)$
+\item $\lambda m.\lambda n.n\ m$
+\item $(\lambda m.\lambda n.n\ m)\ \overline{3}\ \overline{3}$
+\item $In_L$, $In_R$, $Case$
+\item $Pr_L$, $Pr_R$, $MkPair$
+\item Лямбда-выражение, возвращающее $T$, если чёрчевский нумерал равен нулю --- иначе $F$.
+\item Лямбда-выражение, проверяющее чётность чёрчевского нумерала.
+\end{enumerate}
+
+\item Покажите, что если алгоритм нашёл тип для выражения, то можно построить доказательство,
+выводящее этот тип в просто типизированном лямбда-исчислении.
+
+\item Покажите, что если для некоторое лямбда-выражение имеет тип, то у уравнения в алгебраических
+термах, строящегося в алгоримте по выражению, найдётся решение.
+
+\item Назовём \emph{наиболее общей парой} для лямбда-выражения $M$ такую пару $\langle \Gamma, \sigma \rangle$ ($\Gamma\vdash M:\sigma$), 
+что любая другая пара $\langle\Delta,\tau\rangle$ ($\Delta\vdash M:\tau$) является её частным случаем:
+существует подстановка $S$, что $\Delta = S(\Gamma)$ и $\sigma = S(\tau)$. 
+\begin{enumerate}
+\item дайте корректное определение подстановкам на типах и контекстах ($S(\Gamma)$ и $S(\tau)$), 
+<<рукомашески>> использованным выше;
+\item покажите, что алгоритм типизации находит наиболее общую пару.
+\end{enumerate}
+
+\end{enumerate}
 \end{document}
                   
