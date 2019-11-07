@@ -60,3 +60,27 @@ https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
 https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
 + Alberto Martelli, Ugo Montanari: An Efficient Unification Algorithm
 http://moscova.inria.fr/~levy/courses/X/IF/03/pi/levy2/martelli-montanari.pdf
+
+## Лекция 6
+### Увеличение выразительности языка
++ Интуиционистское исчисление высказываний (связки: конъюнкция, дизъюнкция, ложь) и
+соответствующие новым связкам конструкции в лямбда-исчислении.
++ Логика второго порядка
++ Выразимость всех связок через импликацию и квантор всеобщности
++ Система F
+### Где почитать
++ Morten Heine B. Sørensen, Pawel Urzyczyn: Lections on the Curry-Howard Isomorphism
+https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
+
+## Лекция 7
+### Экзистенциальные типы
++ Экзистенциальные типы
+### Где почитать
++ Пример использования экзистенциальных типов в Хаскеле
+https://github.com/shd/tt2014/blob/master/existential.hs
++ Morten Heine B. Sørensen, Pawel Urzyczyn: Lections on the Curry-Howard Isomorphism
+https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
++ Abstract Types Have Existential Type
+http://homepages.inf.ed.ac.uk/gdp/publications/Abstract_existential.pdf
++ On Understanding Types, Data Abstraction, and Polymorphism
+http://lucacardelli.name/Papers/OnUnderstanding.pdf

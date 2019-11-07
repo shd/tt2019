@@ -539,5 +539,22 @@ $$\forall\alpha.\forall\beta.\forall\gamma.\alpha\vee(\beta\with\gamma)\rightarr
 
 \end{enumerate}
 
+\section*{Домашнее задание №7: <<экзистенциальные типы>>}
+\begin{enumerate}
+\item На лекции были выписаны следующие лямбда-выражения для конструкций с кванторами:
+
+$$\begin{array}{ll}
+(a) & \textbf{pack}\ M,\tau\ \textbf{to}\ \exists\alpha.\sigma = \Lambda\beta.\lambda x^{\forall\alpha.\sigma\rightarrow\beta}.x\ \tau\ M\\
+(b) & \textbf{abstype}\ \alpha\ \textbf{with}\ x:\sigma\ \textbf{is}\ M\ \textbf{in}\ N^\rho = M\ \rho\ (\lambda\alpha.\lambda x^\sigma.N)
+\end{array}$$
+
+Возможно, в конструкциях есть ошибки --- исправьте их и докажите, что данные конструкции удовлетворяют аксиомам,
+если выразить $\exists \alpha.P$ как $\forall \phi.(\forall\alpha.P\rightarrow\phi)\rightarrow\phi$.
+
+\item Переформулируйте систему F в исчислении по Карри: укажите новые схемы аксиом для квантора существования.
+\item Переформулируйте операции abstype и pack для исчисления по Карри, укажите соответствующие им лямбда-выражения
+и покажите, что эти выражения соответствуют аксиомам.
+\end{enumerate}
+
 \end{document}
                   
