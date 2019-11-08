@@ -84,3 +84,15 @@ https://disi.unitn.it/~bernardi/RSISE11/Papers/curry-howard.pdf
 http://homepages.inf.ed.ac.uk/gdp/publications/Abstract_existential.pdf
 + On Understanding Types, Data Abstraction, and Polymorphism
 http://lucacardelli.name/Papers/OnUnderstanding.pdf
+
+## Лекция 8
+### Типовая система Хиндли-Милнера
++ Ранг типа
++ Типы и типовые схемы, уточнение/обобщение типов, конструкция let.
++ Типовая система Хиндли-Милнера.
+### Где почитать
++ Бенджамин Пирс, Типы в языках программирования. Издательство «Лямбда пресс» & «Добросвет», Москва, 2011
++ Robin Milner, A theory of type polymorphism in programming (1978) // Journal of Computer and System Sciences, 1978, vol. 17, pp. 348--375
+https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.67.5276
++ Статья на Википедии Hindley-Milner_type_system, вполне информативна в этом вопросе.
+https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system
