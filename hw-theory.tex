@@ -619,5 +619,82 @@ $\beta$-эквивалентное выражение $E$ в системе F.
 
 \end{enumerate}
 
+\section*{Домашнее задание №9: <<алгоритм W; типовая система HM>>}
+\begin{enumerate}
+\item С помощью алгоритма W выведите типы для следующих выражений (или укажите, что выражения не имеют типа):
+\begin{enumerate}
+\item $a$
+\item $x:\alpha\vdash x\ x$
+\item $\vdash \lambda x.x\ x$
+%\item $\vdash \textbf{let}\ x\ \textbf{in}\ x\ x$
+\item $\vdash \textbf{let}\ \overline{1} = \lambda f.\lambda x.f\ x\ \textbf{in}\ \overline{1}\ \overline{1}$
+\item $\vdash \textbf{let}\ s = \lambda f.\lambda x.f\ (f\ x)\ \textbf{in}\ sq\ (sq\ \overline{1})$
+\item $\vdash \textbf{let}\ s = \lambda f.\lambda x.f\ (f\ x)\ \textbf{in}\ (sq\ sq)\ \overline{1}$
+\item $\vdash \textbf{let}\ s = \lambda f.\lambda x.f\ (f\ x)\ \textbf{in}\ sq\ sq\ sq\ sq\ sq\ \overline{1}$;
+чему равен результат бета-редукции указанного терма?
+\end{enumerate}
+\item Рассмотрим типовую систему HM+Y: система Хиндли-Милнера в которой, по определению,
+$\vdash (\lambda f.(\lambda x.f\ (x\ x))\ (\lambda x.f\ (x\ ))): \forall \alpha.(\alpha\rightarrow\alpha)\rightarrow\alpha$.
+\begin{enumerate}
+\item Типизируем ли в этой типовой системе $\Omega = \omega\ \omega$, где $\omega = \lambda x.x\ x$?
+\item Найдите такой терм $F$, что $\vdash F:\bot$.
+\item Найдите такой терм $E$, что $\vdash E:\alpha\vee\neg\alpha$.                          
+\end{enumerate}
+\item Как нетрудно заметить, список --- это <<параметризованные>> числа в аксиоматике Пеано.
+Число --- это длина списка, а к каждому штриху мы присоединяем какое-то значение.
+Операции добавления и удаления элемента из списка --- это операции прибавления и вычитания
+единицы к числу.
+
+Рассмотрим тип <<бинарного списка>>:
+
+\begin{verbatim}
+type 'a bin_list = Nil | Zero of (('a*'a) bin_list) | One of 'a * (('a*'a) bin_list);;
+\end{verbatim}
+
+Если бы такое можно было выразить в типовой системе Хиндли-Милнера, то операция добавления
+элемента к списку записалась бы на языке Окамль вот так (сравните с прибавлением 1 к числу
+в двоичной системе счисления):
+
+\begin{verbatim}
+let rec add elem lst = match lst with
+    Nil -> One (elem,lst)
+  | Zero tl -> One (elem,tl)
+  | One (hd,tl) -> Zero (add (elem,hd) tl)
+\end{verbatim}
+
+\begin{enumerate}
+\item Какой тип имеет \verb!add! (рекурсивная функция должна уже включать в себя Y-комбинатор и не
+требовать никаких дополнительных усилий для вызова)?
+Считайте, что тип \verb!bin_list 'a! уже как-то задан, и обозначается как $\tau(\alpha)$.
+\item Какой ранг имеет тип этой функции, почему её не скомпилировать в Окамле?
+\item Предложите функцию для удаления элемента списка (головы).
+\item Предложите функцию для эффективного соединения двух списков (источник для 
+вдохновения --- сложение двух чисел в столбик).
+\item Предложите функцию для эффективного выделения $n$-го элемента из списка.
+\end{enumerate}
+
+%\item В стандартной библиотеке Java есть такой текст:
+%
+%\begin{verbatim}
+%public abstract class Enum<E extends Enum<E>>
+%\end{verbatim}
+%
+%Предположим, что в типовой системе есть дополнительный двухместный предикатный символ <<наследует>> ($<:$).
+%Тогда укажите 
+
+\item Задан тип <<дерево>>:
+
+\begin{verbatim}
+type 'a tree = Leaf of 'a | Node of (tree 'a) * (tree 'a);;
+\end{verbatim}
+
+Задайте тип $\tau(\alpha)$:
+\begin{enumerate}
+\item Как эквирекурсивный тип (задайте через $\mu$-оператор).
+\item Как изорекурсивный тип (определите функции \verb!roll! и \verb!unroll!, укажите их тип).
+\end{enumerate}
+
+\end{enumerate}
+
 \end{document}
                   

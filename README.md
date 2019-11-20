@@ -96,3 +96,16 @@ http://lucacardelli.name/Papers/OnUnderstanding.pdf
 https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.67.5276
 + Статья на Википедии Hindley-Milner_type_system, вполне информативна в этом вопросе.
 https://en.wikipedia.org/wiki/Hindley%E2%80%93Milner_type_system
+
+## Лекция 9
+### Алгоритм W
++ Алгоритм W
++ Добавление Y-комбинатора в типовую систему
++ Экви- и изорекурсивные типы
+### Где почитать
++ Robin Milner, A theory of type polymorphism in programming (1978) // Journal of Computer and System Sciences, 1978, vol. 17, pp. 348--375
+https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.67.5276
++ Бенджамин Пирс, Типы в языках программирования. Издательство «Лямбда пресс» & «Добросвет», Москва, 2011
++ Luis Damas, Robin Milner, Principal type-schemes for functional programs // Proceedings of the 9th ACM SIGPLAN-SIGACTsymposium on 
+Principles of programming languages, ACM, pp. 207–212
+http://web.cs.wpi.edu/~cs4536/c12/milner-damas_principal_types.pdf
