@@ -657,7 +657,7 @@ type 'a bin_list = Nil | Zero of (('a*'a) bin_list) | One of 'a * (('a*'a) bin_l
 
 \begin{verbatim}
 let rec add elem lst = match lst with
-    Nil -> One (elem,lst)
+    Nil -> One (elem,Nil)
   | Zero tl -> One (elem,tl)
   | One (hd,tl) -> Zero (add (elem,hd) tl)
 \end{verbatim}
