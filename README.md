@@ -109,3 +109,23 @@ https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.67.5276
 + Luis Damas, Robin Milner, Principal type-schemes for functional programs // Proceedings of the 9th ACM SIGPLAN-SIGACTsymposium on 
 Principles of programming languages, ACM, pp. 207–212
 http://web.cs.wpi.edu/~cs4536/c12/milner-damas_principal_types.pdf
+
+## Лекция 10
+### Обобщённые типовые системы
++ Обобщённая типовая система
++ Зависимые типы
++ Лямбда-куб
+### Где почитать
++ Henk Barendregt, An Introduction to Generalized Type Systems (1991) // Journal of Functional Programming, April 1991, 1(2):125-154
+http://homepages.inf.ed.ac.uk/wadler/papers/barendregt/pure-type-systems.pdf
++ Бенджамин Пирс, Типы в языках программирования. Издательство «Лямбда пресс» & «Добросвет», Москва, 2011
+
+## Лекция 11
+### Введение в язык Идрис
++ Общий синтаксис (определение функций, алгебраических типов)
++ Разбор конструкций языка на примере функции с зависимым типом (printf)
+### Где почитать
++ Документация на домашней странице языка Идрис
+https://www.idris-lang.org/
++ Примеры программ на языке Идрис: hello, printf
+https://github.com/shd/tt2019/idris-examples
