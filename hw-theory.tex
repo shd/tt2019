@@ -696,5 +696,59 @@ type 'a tree = Leaf of 'a | Node of (tree 'a) * (tree 'a);;
 
 \end{enumerate}
 
+\section*{Домашнее задание №10: <<Язык Идрис>>}
+
+\begin{enumerate}
+\item Воспользовавшись функцией \verb!sprintf! как образцом, добавьте  
+следующие шаблоны:
+\begin{enumerate}
+\item строка (шаблон \verb!%s!);
+\item десятичное число заданной длины с ведущими нулями (шаблон \verb!%05d! и подобные);
+\item строка заданной параметрами длины (шаблон \verb!%*.*s!).
+\end{enumerate}
+
+\item Определите в языке Идрис конъюнкцию и дизъюнкцию с помощью
+квантора всеобщности и импликации (аналогично интуиционистскому исчислению предикатов второго порядка).
+Определите все стандартные операции для них (инъекции, проекции и т.п.):
+эти операции, очевидно, будут доказательством некоторых утверждений в интуиционистской
+логике. Какие это утверждения, приведите их.
+
+\item Аналогично предыдущему заданию, определите в языке Идрис чёрчевские нумералы и арифметические операции на них.
+
+\item Рассмотрим три алгебраических типа из языка Идрис: 
+\begin{enumerate}
+\item натуральное число \verb!Nat!:\\
+\url{https://github.com/idris-lang/Idris-dev/blob/master/libs/prelude/Prelude/Nat.idr};
+\item ограниченное целое число \verb!Fin!:\\
+\url{https://github.com/idris-lang/Idris-dev/blob/master/libs/base/Data/Fin.idr};
+\item ограниченный вектор \verb!Vect!:\\
+\url{https://www.idris-lang.org/docs/current/base_doc/docs/Data.Vect.html} и
+\end{enumerate}
+
+Определите функцию \verb!swap: Vect n a -> (Fin n) -> (Fin n) -> Vect n a!,
+строящую новый вектор, в котором два элемента вектора поменяны местами.
+
+\item Определите функции арифметики для Fin:
+\begin{enumerate}
+\item \verb!plus_fin: Fin a -> Fib b -> Fin (a+b)!\\
+\item \verb!mul_fin: Fin a -> Fin b -> Fin (a*b)!\\
+\item \verb!dec_fin: Fin (S a) -> Fin a!
+\end{enumerate}
+
+\item Определите функции минимума для натуральных (Пеано) и конечных чисел:\\
+\verb!nat_min: Nat -> Nat -> Nat!\\
+\verb!min_fin: {a:Nat} -> {b:Nat} -> Fin (S a) -> Fin (S b) -> Fin (S (nat_min a b))!
+
+Также определите функции:
+\begin{verbatim}
+map2: {X:Type} -> {Y:Type} -> {Z:Type} -> (a:Nat) -> (b:Nat) -> 
+                       (X->Y->Z) -> Vect a X -> Vect b Y -> Vect (nat_min a b) Z
+
+index2: {X:Type} -> {Y:Type} -> (a:Nat) -> (b:Nat) -> Fin (nat_min a b) ->
+                       Vect a X -> Vect b Y -> (X,Y)
+\end{verbatim}
+
+\end{enumerate}
+
 \end{document}
                   
