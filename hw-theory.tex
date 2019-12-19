@@ -750,5 +750,124 @@ index2: {X:Type} -> {Y:Type} -> (a:Nat) -> (b:Nat) -> Fin (nat_min a b) ->
 
 \end{enumerate}
 
+\section*{Домашнее задание №11: <<Идрис, простые доказательства>>}
+Ещё раз напомним конструкцию \verb!replace!, использованную на лекции:
+
+\verb!replace: (x=y) -> P x -> P y!.
+
+Функция replace берёт два явных параметра, и один неявный ($P$).
+$P$ --- это некоторый тип, зависящий от $x$. Функция имеет естественный 
+смысл: если два значения равны, и свойство выполнено для одного из них, 
+то оно выполнено и для другого.
+
+Неявность $P$ предполагает, что компилятор может догадаться до того, что
+это за значение, но на практике он обычно не справляется с этой задачей. 
+Поэтому обычно $P$ нужно указывать.
+
+Давайте поймём, что это должен быть за $P$, и для этого рассмотрим 
+пример:
+
+\verb!plus_zero_commutative: (a:Nat) -> 0 + a = a + 0!
+
+Здесь мы, имея предположением индукции \verb!0+a=a+0!, должны
+доказать \verb!0 + (S a) = (S a) + 0!. Логично взять предположение
+за равенство $x=y$, при этом \verb!x! будет соответствовать \verb!0 + a!,
+а \verb!y! будет соответствовать \verb!a + 0!.
+Теперь подберём такое $P$, чтобы \verb!P (0 + a)! 
+унифицировалось с \verb!0 + (S a)!, а \verb!P (a + 0)! унифицировалось 
+с \verb!(S a) + 0!.
+
+Давайте возьмём \verb!P = \w => S (0+a)=S w!. Тогда \verb!P (0 + a)! --- это
+\verb!S (0+a) = S (0+a)! (что очевидно доказывается при помощи \verb!Refl!), 
+а \verb!P (a+0)! --- это \verb!S (0+a) = S (a+0)! (что является требуемым 
+утверждением, так как \verb!S (0+a)! = \verb!S(a)! = \verb!0+S(a)!; компилятор,
+как мы обсуждали, способен короткие цепочки подобных преобразований
+производить самостоятельно).
+
+Итак, мы получили следующий код:
+\begin{verbatim}
+plus_zero_commutative: (a:Nat) -> 0 + a = a + 0
+plus_zero_commutative Z = Refl
+plus_zero_commutative (S a) = 
+      replace {P = \w => S (0+a)=S w} (plus_zero_commutative a) Refl
+\end{verbatim}
+
+В отличие от \verb!replace!, конструкция \verb!rewrite! имеет дополнительный
+эвристический алгоритм для подбора соответствующего $P$, поэтому в части случаев 
+мы можем довериться её интеллекту.
+
+\begin{enumerate}
+\item Свойства равенства. Докажите, что:
+\begin{enumerate}
+\item \verb!x = y -> y = x!
+\item \verb!x = y -> y = z -> x = z!
+\item (конгруэнтность) \verb!(P: A->B) -> x = y -> P x = P y!
+\end{enumerate}
+
+\item Простая арифметика --- сложение. Докажите, что:
+\begin{enumerate} 
+\item \verb!x = x + 0!
+\item \verb!S x = 1 + x!
+\item \verb!S x = x + 1!
+\item \verb!S x + S x = S (S (x + x))!
+\item \verb!S x + S y = S (S (x + y))!
+\item \verb!S (x + y) = x + (S y)!
+\item \verb!x + y = y + x!
+\item \verb!x + (y + z) = (x + y) + z!
+\end{enumerate}
+
+\item Простая арифметика --- умножение. Докажите, что:
+\begin{enumerate} 
+\item \verb!0 = x * 0!
+\item \verb!0 = 0 * x!
+\item \verb!x = 1 * x!
+\item \verb!x = x * 1!
+\item \verb!x * y = y * x!
+\item \verb!x * (y * z) = (x * y) * z!
+\item \verb!x * (y + z) = x * y + x * z!
+\item \verb!(y + z) * t = y * t + z * t!
+\item \verb!(x + y) * 2 = x + x + y + y!
+\end{enumerate}
+
+\item Отношение <<меньше или равно>> определено в библиотеке Идрис так:
+
+\begin{verbatim}
+data LTE : (n : Nat) -> (m : Nat) -> Type where
+    LTEZero : LTE 0 right  -- Zero is the smallest Nat
+    LTESucc : LTE left right -> LTE (S left) (S right)
+                           -- If n <= m, then n + 1 <= m + 1
+\end{verbatim}
+
+\begin{enumerate}
+\item Докажите, что \verb!LTE 3 5!
+\item Докажите, что \verb!LTE x y -> LTE x (S y)!
+\item Докажите, что \verb!LTE x y -> LTE (x+n) (y+n)!
+\item \verb!LTE x y -> LTE y z -> LTE x z!
+\item \verb!LTE x y -> LTE y x -> x = y!
+\item \verb!LTE x x!
+\end{enumerate}
+
+\item Определите отношение <<строго больше>>, $GT$. Докажите, что
+
+\begin{enumerate}
+\item \verb!GT 5 3!
+\item \verb!GT x y -> GT y z -> GT x z!
+\item \verb!GT (x+1) x!
+\item \verb!GT x y -> GT (x+n) (y+n)!
+\item \verb!GT (x*x) x!
+\item \verb!GT x 2 -> GT (x*x) (x+x)!
+\item \verb!Either (LTE x y) (GT x y)!
+\end{enumerate}
+
+\item Определите ограниченное вычитание \verb!sub! (\verb!sub x y! равно 0, если $x < y$), 
+докажите:
+\begin{enumerate}
+\item \verb!LTE x y -> sub x y = 0!
+\item \verb!sub x y = 0 -> LTE x y!
+\item \verb!LTE y x -> y + (sub x y) = x!
+\end{enumerate}
+
+\end{enumerate}
+
 \end{document}
                   

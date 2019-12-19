@@ -129,3 +129,11 @@ http://homepages.inf.ed.ac.uk/wadler/papers/barendregt/pure-type-systems.pdf
 https://www.idris-lang.org/
 + Примеры программ на языке Идрис: hello, printf
 https://github.com/shd/tt2019/idris-examples
+
+## Лекция 12
+### Доказательства в Идрис
++ Равенство в Idris, конструктор Refl
++ Конструкции replace и rewrite
+### Где почитать
++ Документация на домашней странице языка Идрис
+https://www.idris-lang.org/
