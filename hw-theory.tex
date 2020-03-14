@@ -931,6 +931,37 @@ data LTE : (n : Nat) -> (m : Nat) -> Type where
 на $\mathbb{N}_0$, покажите его рефлексивность.
 \end{enumerate}
 
+\item Финальные задачи (по 8 баллов).
+\begin{enumerate}
+\item Определим отношение "Делится нацело" на натуральных числах:
+
+\begin{verbatim}
+data DividesNat : (a : Nat) -> (b : Nat) -> Type where
+  Div : (k ** (k * x = y)) -> DividesNat y x
+\end{verbatim}
+
+Определим с помощью него свойство "Простое число":
+
+\begin{verbatim}
+data Prime : (p : Nat) -> Type where
+  ConsPrime : LTE 2 p -> ((d : Nat) -> DividesNat p d -> Either (d = 1) (d = p)) -> Prime p
+\end{verbatim}
+
+Докажите, что:
+\begin{enumerate}
+\item Существуют 3 простых числа такие, что сумма двух из них равна третьему (8 баллов).
+\item Для любых двух простых чисел, больших двойки, их сумма не является простым числом (8 баллов).
+\end{enumerate}
+
+\item Докажите, что число списков длины $n$, каждый элемент которых из \verb!Fin k! --- $k^n$ (8 баллов).
+\item Докажите, что если $$S(n) = \left\{\begin{array}{ll}
+    S(n-1) + n, &\mbox{ если } n > 0\\
+    0, &\mbox{ иначе}
+\end{array}\right.$$
+то $$S(n) = \frac{n\cdot(n+1)}{2}$$
+
+\end{enumerate}
+
 \end{enumerate}
 \end{document}
                   
